@@ -1,1 +1,13 @@
-<h2>yeet</h2>
+<h2 mat-dialog-title>Edit Contact</h2>
+<mat-dialog-content>
+  <form [formGroup]="editForm">
+    <input formControlName="name" type="text">
+    <input formControlName="phoneNumber" type="text">
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+
+  <button color="primary" mat-button mat-dialog-close>Cancel</button>
+  <button [disabled]=" !editForm.dirty || editForm.invalid" (click)="onEdit()" color="primary" mat-button  >Save</button>
+</mat-dialog-actions>

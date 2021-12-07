@@ -9,4 +9,8 @@ export class UsersService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
   }
+
+  editUser(user: User): Observable<User> {
+    return this.http.put<User>(`https://jsonplaceholder.typicode.com/users/${user.id}`, user)
+  }
 }

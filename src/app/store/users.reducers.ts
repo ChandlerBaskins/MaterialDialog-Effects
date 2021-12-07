@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { UsersActions } from './users.actions';
-import { UserState } from './users.model';
+import { User, UserState } from './users.model';
 
 export const initialState: UserState = {
   users: null,
@@ -35,7 +35,7 @@ const reducer = createReducer(
   })),
   on(UsersActions.editUserSuccess, (state, payload) => ({
     ...state,
-    users: payload.users,
+    users: state.users?.map(user => user.id === payload.user.id ? payload.user : user) as User[],
     isLoadingUsers: false,
     isLoadingUsersError: null,
   })),

@@ -1,8 +1,11 @@
-
 <h2>USERS</h2>
-<div *ngFor="let user of users | async; let idx  = index;" >
+<main>
+  <div class="user" *ngFor="let user of users | async; let idx  = index;" >
   <img width="50px" [src]="'https://robohash.org/'+idx" alt="profile pic" >
 <p (click)="onEdit(user)" >{{user.name}}</p>
+<button mat-button><mat-icon>edit</mat-icon></button>
 </div>
 
 
+
+</main>

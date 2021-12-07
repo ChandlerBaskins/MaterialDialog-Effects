@@ -21,6 +21,6 @@ export class AppComponent implements OnInit {
   }
 
   onEdit(user: User) {
-    this.store.dispatch(UsersActions.openDialog({ component: EditDialogComponent, }))
+    this.store.dispatch(UsersActions.openDialog({ component: EditDialogComponent, data: { data: user } }))
   }
 }

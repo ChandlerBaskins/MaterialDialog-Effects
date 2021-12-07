@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { ComponentType } from "@angular/cdk/portal";
 import { User } from './users.model';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 const fetchUsers = createAction('[Users Page] Fetch Users');
 const fetchUsersSuccess = createAction(
@@ -12,10 +13,10 @@ const fetchUsersError = createAction(
   props<{ error: string }>()
 );
 
-const editUser = createAction('[Users Page] Edit Users');
+const editUser = createAction('[Users Page] Edit Users', props<{ user: User }>());
 const editUserSuccess = createAction(
   '[Users Page] Edit Users Success',
-  props<{ users: User[] }>()
+  props<{ user: User }>()
 );
 const editUserError = createAction(
   '[Users Page] Edit Users Error ',
@@ -24,11 +25,11 @@ const editUserError = createAction(
 
 const openDialog = createAction(
   '[Edit Users Dialog] Open Users Dialog ',
-  props<{ component: ComponentType<unknown>, data?: any }>()
+  props<{ component: ComponentType<unknown>, data?: MatDialogConfig<User> }>()
 );
 const saveDialog = createAction(
   '[Edit Users Dialog] Save Users Dialog ',
-  props<{ user: User }>()
+  props<{ user: User, changes: { name: string, phoneNumber: string } }>()
 );
 const closeDialog = createAction(
   '[Edit Users Dialog] Closed Users Dialog ',
